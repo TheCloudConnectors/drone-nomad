@@ -113,6 +113,11 @@ func main() {
 			Usage:  "git author avatar",
 			EnvVar: "DRONE_COMMIT_AUTHOR_AVATAR",
 		},
+        cli.StringFlag{
+            Name:   "commit.tag",
+            Usage:  "commit tag",
+            EnvVar: "DRONE_TAG",
+        },
 
 		//
 		// build args
@@ -240,6 +245,7 @@ func run(c *cli.Context) {
 			Remote:  c.String("remote.url"),
 			Sha:     c.String("commit.sha"),
 			Ref:     c.String("commit.sha"),
+            Tag:     c.String("commit.tag"),
 			Link:    c.String("commit.link"),
 			Branch:  c.String("commit.branch"),
 			Message: c.String("commit.message"),

@@ -36,6 +36,7 @@ type (
 		Remote  string
 		Sha     string
 		Ref     string
+        Tag     string
 		Link    string
 		Branch  string
 		Message string
