@@ -1,13 +1,13 @@
 package main
 
 import (
-	"fmt"
-	"os"
-	"errors"
-	"io/ioutil"
-	"text/template"
 	"bytes"
+	"errors"
+	"fmt"
+	"io/ioutil"
+	"os"
 	"os/exec"
+	"text/template"
 )
 
 type (
@@ -36,7 +36,7 @@ type (
 		Remote  string
 		Sha     string
 		Ref     string
-        Tag     string
+		Tag     string
 		Link    string
 		Branch  string
 		Message string
