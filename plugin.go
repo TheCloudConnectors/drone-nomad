@@ -84,7 +84,7 @@ func (p Plugin) Exec() error {
 
 	var jobSpec *bytes.Buffer
 	if p.Config.UseTemplate {
-		tmpl, err := template.New("job").Parse(string(jobSpecBytes))
+		tmpl, err := template.New("job").Delims("[[", "]]").Parse(string(jobSpecBytes))
 		if err != nil {
 			return err
 		}
