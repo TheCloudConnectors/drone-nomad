@@ -68,7 +68,7 @@ func (p Plugin) Exec() error {
 		return errors.New("no job file specified")
 	}
 	if p.Config.NomadAddr == "" {
-		p.Config.NomadAddr = "http://nomad.service.consul:4646"
+		p.Config.NomadAddr = "https://nomad.service.consul:4646"
 	}
 
 	jobFile, err := os.Open(p.Config.Job)
@@ -96,7 +96,7 @@ func (p Plugin) Exec() error {
 		jobSpec = bytes.NewBuffer(jobSpecBytes)
 	}
 
-	cmd := exec.Command("/bin/nomad", "run", "-address", p.Config.NomadAddr, "-verbose", "-")
+	cmd := exec.Command("/bin/nomad", "run", "-address", p.Config.NomadAddr, "-verbose", "-ca-cert", "/etc/certs/nomad-cli-ca.crt", "-client-cert", "/etc/certs/nomad-cli.pem", "-client-key", "/etc/certs/nomad-cli.key", "-")
 	cmd.Stdin = jobSpec
 	out, err := cmd.CombinedOutput()
 	fmt.Println(string(out))
